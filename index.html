@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+  </head>
+
+  <style>
+    .to_do_list {
+      background-color: #f1c636;
+      padding: 10px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .input {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+    }
+    .task {
+      cursor: pointer;
+      text-align: center;
+      font-size: 20px;
+      background-color: #ffcccc;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    .task_background {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .add_task_btn {
+      background-color: #1fdbe9d7;
+      width: 80px;
+      margin-right: 10px;
+      margin-left: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .clear_all_btn {
+      background-color: #1fdbe9d7;
+      width: 100px;
+      margin-right: 10px;
+      margin-left: 3px;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+
+  <body style="margin: 0px; background-color: rgb(84, 165, 84)">
+    <div class="to_do_list">To Do List</div>
+
+    <div class="input">
+      <input id="inputfield" type="text" />
+      <div onclick="add_task();" class="add_task_btn">Add Task</div>
+      <div onclick="clear_task();" class="clear_all_btn">Clear All Tasks</div>
+    </div>
+
+    <div id="content"></div>
+
+    <script>
+      function add_task() {
+        let elem_content = document.querySelector('#content');
+        let elem_inputfield = document.querySelector('#inputfield');
+        let result =
+          "<div onmouseover='over(this);' onmouseout='out(this);' onclick='crossout_task(this);' class='task'>" +
+          elem_inputfield.value +
+          '</div>';
+        elem_content.innerHTML +=
+          "<div class='task_background'>" + result + '</div>';
+        elem_inputfield.value = '';
+      }
+
+      function clear_task() {
+        let elem_content = document.querySelector('#content');
+        elem_content.innerHTML = '';
+      }
+
+      function crossout_task(elem) {
+        if ((elem.style.display = 'block')) {
+          elem.style.textDecoration = 'line-through';
+          elem.style.color = 'gray';
+        }
+      }
+
+      let over = (elem) => {
+        elem.style.backgroundColor = '#ffaaaa';
+      };
+      let out = (elem) => {
+        elem.style.backgroundColor = '#ffcccc';
+      };
+    </script>
+  </body>
+</html>
