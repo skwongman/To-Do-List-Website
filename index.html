@@ -72,6 +72,9 @@
       function add_task() {
         let elem_content = document.querySelector('#content');
         let elem_inputfield = document.querySelector('#inputfield');
+        if(elem_inputfield.value === ''){
+          return alert('Please input the to do item');
+        }
         let result =
           "<div onmouseover='over(this);' onmouseout='out(this);' onclick='crossout_task(this);' class='task'>" +
           elem_inputfield.value +
